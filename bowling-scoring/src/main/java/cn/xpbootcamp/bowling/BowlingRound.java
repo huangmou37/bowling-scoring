@@ -13,9 +13,9 @@ public class BowlingRound {
 
   public boolean isFinished() {
     if(roundNumber < 10) {
-      return timesOfBlowing != 1 || score >= 10;
+      return timesOfBlowing > 1 || score >= 10;
     } else {
-      return false;
+      return (timesOfBlowing > 1 && score < 10) || (timesOfBlowing > 2);
     }
   }
 
