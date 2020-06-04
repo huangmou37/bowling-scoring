@@ -104,4 +104,13 @@ public class BowlingRoundTest {
 
     assertEquals(9, firstRound.getScore());
   }
+
+  @Test
+  public void should_return_15_when_get_score_given_1st_round_with_1st_10_and_2nd_5_blow_out() {
+    BowlingRound firstRound = new BowlingRound(1);
+    firstRound.blowOut(10);
+    firstRound.blowOut(5);
+
+    assertEquals(15, firstRound.getScore());
+  }
 }
