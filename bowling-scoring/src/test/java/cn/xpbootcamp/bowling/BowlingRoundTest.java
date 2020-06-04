@@ -106,10 +106,12 @@ public class BowlingRoundTest {
   }
 
   @Test
-  public void should_return_15_when_get_score_given_1st_round_with_1st_10_and_2nd_5_blow_out() {
+  public void should_return_15_when_get_score_given_1st_round_with_1st_10_blow_out_and_2nd_round_with_1st_5_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
+    BowlingRound secondRound = new BowlingRound(2);
+    firstRound.setNextRound(secondRound);
     firstRound.blowOut(10);
-    firstRound.blowOut(5);
+    secondRound.blowOut(5);
 
     assertEquals(15, firstRound.getScore());
   }
