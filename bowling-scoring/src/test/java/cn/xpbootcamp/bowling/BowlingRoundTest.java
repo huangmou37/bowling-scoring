@@ -10,7 +10,7 @@ public class BowlingRoundTest {
 
   // test cases of isFinished()
   @Test
-  public void should_return_false_when_is_finished_given_a_round_with_1st_4_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
     firstRound.blowOut(4);
 
@@ -18,7 +18,7 @@ public class BowlingRoundTest {
   }
 
   @Test
-  public void should_return_true_when_is_finished_given_a_round_with_1st_10_blow_out() {
+  public void should_return_true_when_is_finished_given_1st_round_with_1st_10_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
     firstRound.blowOut(10);
 
@@ -26,7 +26,7 @@ public class BowlingRoundTest {
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_a_round_with_1st_4_and_2nd_5_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_and_2nd_5_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
     firstRound.blowOut(4);
     firstRound.blowOut(5);
@@ -35,7 +35,7 @@ public class BowlingRoundTest {
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_a_round_with_1st_4_and_2nd_6_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_and_2nd_6_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
     firstRound.blowOut(4);
     firstRound.blowOut(6);
