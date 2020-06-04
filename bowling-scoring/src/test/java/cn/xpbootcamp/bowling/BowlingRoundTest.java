@@ -57,4 +57,13 @@ public class BowlingRoundTest {
 
     assertFalse(finalRound.isFinished());
   }
+
+  @Test
+  public void should_return_false_when_is_finished_given_10th_round_with_1st_1_and_2nd_9_blow_out() {
+    BowlingRound finalRound = new BowlingRound(10);
+    finalRound.blowOut(1);
+    finalRound.blowOut(9);
+
+    assertFalse(finalRound.isFinished());
+  }
 }
