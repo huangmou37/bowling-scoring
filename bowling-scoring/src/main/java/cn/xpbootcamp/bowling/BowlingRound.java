@@ -3,8 +3,6 @@ package cn.xpbootcamp.bowling;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Integer.min;
-
 public class BowlingRound {
 
   public BowlingRound(int roundNumber) {
@@ -14,29 +12,58 @@ public class BowlingRound {
   }
 
   public void knockDown(int i) {
-    numOfRolls++;
     knockDowns.add(i);
     totalKnockDown += i;
   }
 
   public boolean isFinished() {
     if (roundNumber < 10) {
-      return numOfRolls > 1 || totalKnockDown >= 10;
-    } else {
-      return (numOfRolls > 1 && totalKnockDown < 10) || (numOfRolls > 2);
+      return knockDowns.size() > 1 || totalKnockDown >= 10;
     }
+
+    return (knockDowns.size() > 1 && totalKnockDown < 10) || (knockDowns.size() > 2);
   }
 
   public int getScore() {
-    int score = totalKnockDown;
+    return totalKnockDown + getBonus();
+  }
 
-    if (isStrike() && null != nextRound) {
-      for (int i = 0; i < min(nextRound.knockDowns.size(), 2); i++) {
-        score += nextRound.knockDowns.get(i);
+  private int getBonus() {
+    int result = 0;
+
+    if (isStrike()) {
+      result = getKnowDownOfNextTwoRolls();
+    } else if (isSpare()) {
+      result = getKnowDownOfNextOneRoll();
+    }
+
+    return result;
+  }
+
+  private int getKnowDownOfNextOneRoll() {
+    int result = 0;
+
+    if (nextRound != null && nextRound.knockDowns.size() > 0) {
+      result = nextRound.knockDowns.get(0);
+    }
+
+    return result;
+  }
+
+  private int getKnowDownOfNextTwoRolls() {
+    int result = 0;
+
+    if (nextRound != null && nextRound.knockDowns.size() > 0) {
+      if (nextRound.isStrike()) {
+        result = 10 + nextRound.getKnowDownOfNextOneRoll();
+      } else if (nextRound.knockDowns.size() == 1) {
+        result = nextRound.knockDowns.get(0);
+      } else {
+        result = nextRound.knockDowns.get(0) + nextRound.knockDowns.get(1);
       }
     }
 
-    return score;
+    return result;
   }
 
   public void setNextRound(BowlingRound nextRound) {
@@ -44,10 +71,12 @@ public class BowlingRound {
   }
 
   private boolean isStrike() {
-    return numOfRolls == 1 && totalKnockDown == 10;
+    return knockDowns.size() == 1 && totalKnockDown == 10;
   }
 
-  private int numOfRolls = 0;
+  private boolean isSpare() {
+    return knockDowns.size() == 2 && totalKnockDown == 10;
+  }
 
   private List<Integer> knockDowns;
 
