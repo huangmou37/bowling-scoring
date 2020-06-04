@@ -3,6 +3,7 @@ package cn.xpbootcamp.bowling;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BowlingRoundTest {
 
@@ -12,5 +13,13 @@ public class BowlingRoundTest {
     firstRound.blowOut(4);
 
     assertFalse(firstRound.isFinished());
+  }
+
+  @Test
+  public void should_return_true_when_is_finished_given_1st_10_blow_out() {
+    BowlingRound firstRound = new BowlingRound();
+    firstRound.blowOut(10);
+
+    assertTrue(firstRound.isFinished());
   }
 }
