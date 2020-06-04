@@ -2,11 +2,13 @@ package cn.xpbootcamp.bowling;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BowlingRoundTest {
 
+  // test cases of isFinished()
   @Test
   public void should_return_false_when_is_finished_given_a_round_with_1st_4_blow_out() {
     BowlingRound firstRound = new BowlingRound(1);
@@ -74,5 +76,15 @@ public class BowlingRoundTest {
     finalRound.blowOut(8);
 
     assertTrue(finalRound.isFinished());
+  }
+
+  // test cases of getScore()
+
+  @Test
+  public void should_return_4_when_get_score_given_1st_round_with_4_blow_out() {
+    BowlingRound firstRound = new BowlingRound(1);
+    firstRound.blowOut(4);
+
+    assertEquals(4, firstRound.getScore());
   }
 }

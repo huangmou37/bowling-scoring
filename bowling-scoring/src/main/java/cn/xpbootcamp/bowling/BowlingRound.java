@@ -19,6 +19,10 @@ public class BowlingRound {
     }
   }
 
+  public int getScore() {
+    return score;
+  }
+
   private int timesOfBlowing = 0;
 
   private int score = 0;
