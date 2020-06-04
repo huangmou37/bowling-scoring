@@ -87,4 +87,12 @@ public class BowlingRoundTest {
 
     assertEquals(4, firstRound.getScore());
   }
+
+  @Test
+  public void should_return_10_when_get_score_given_1st_round_with_10_blow_out() {
+    BowlingRound firstRound = new BowlingRound(1);
+    firstRound.blowOut(10);
+
+    assertEquals(10, firstRound.getScore());
+  }
 }
