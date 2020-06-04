@@ -154,4 +154,18 @@ public class BowlingRoundTest {
 
     assertEquals(25, firstRound.getScore());
   }
+
+  @Test
+  public void should_return_30_when_get_score_given_1st_round_with_10_knock_down_in_1st_roll_and_2nd_round_with_10_knock_down_in_1st_roll_and_3rd_round_with_10_knock_down_in_1st_roll() {
+    BowlingRound firstRound = new BowlingRound(1);
+    BowlingRound secondRound = new BowlingRound(2);
+    BowlingRound thirdRound = new BowlingRound(3);
+    firstRound.setNextRound(secondRound);
+    secondRound.setNextRound(thirdRound);
+    firstRound.knockDown(10);
+    secondRound.knockDown(10);
+    thirdRound.knockDown(10);
+
+    assertEquals(30, firstRound.getScore());
+  }
 }
