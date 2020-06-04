@@ -9,30 +9,30 @@ public class BowlingRound {
 
   public BowlingRound(int roundNumber) {
     this.roundNumber = roundNumber;
-    this.blowOuts = new ArrayList<>();
-    this.totalBlowOut = 0;
+    this.knockDowns = new ArrayList<>();
+    this.totalKnockDown = 0;
   }
 
-  public void blowOut(int i) {
-    timesOfBlowing++;
-    blowOuts.add(i);
-    totalBlowOut += i;
+  public void knockDown(int i) {
+    numOfRolls++;
+    knockDowns.add(i);
+    totalKnockDown += i;
   }
 
   public boolean isFinished() {
     if (roundNumber < 10) {
-      return timesOfBlowing > 1 || totalBlowOut >= 10;
+      return numOfRolls > 1 || totalKnockDown >= 10;
     } else {
-      return (timesOfBlowing > 1 && totalBlowOut < 10) || (timesOfBlowing > 2);
+      return (numOfRolls > 1 && totalKnockDown < 10) || (numOfRolls > 2);
     }
   }
 
   public int getScore() {
-    int score = totalBlowOut;
+    int score = totalKnockDown;
 
     if (isStrike() && null != nextRound) {
-      for (int i = 0; i < min(nextRound.blowOuts.size(), 2); i++) {
-        score += nextRound.blowOuts.get(i);
+      for (int i = 0; i < min(nextRound.knockDowns.size(), 2); i++) {
+        score += nextRound.knockDowns.get(i);
       }
     }
 
@@ -44,14 +44,14 @@ public class BowlingRound {
   }
 
   private boolean isStrike() {
-    return timesOfBlowing == 1 && totalBlowOut == 10;
+    return numOfRolls == 1 && totalKnockDown == 10;
   }
 
-  private int timesOfBlowing = 0;
+  private int numOfRolls = 0;
 
-  private List<Integer> blowOuts;
+  private List<Integer> knockDowns;
 
-  private int totalBlowOut;
+  private int totalKnockDown;
 
   private int roundNumber;
 

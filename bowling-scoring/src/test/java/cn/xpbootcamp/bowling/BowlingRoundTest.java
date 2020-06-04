@@ -10,70 +10,70 @@ public class BowlingRoundTest {
 
   // test cases of isFinished()
   @Test
-  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_4_knock_down_in_1st_roll() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(4);
+    firstRound.knockDown(4);
 
     assertFalse(firstRound.isFinished());
   }
 
   @Test
-  public void should_return_true_when_is_finished_given_1st_round_with_1st_10_blow_out() {
+  public void should_return_true_when_is_finished_given_1st_round_with_10_knock_down_in_1st_roll() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(10);
+    firstRound.knockDown(10);
 
     assertTrue(firstRound.isFinished());
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_and_2nd_5_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_4_and_5_knock_down_in_two_rolls() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(4);
-    firstRound.blowOut(5);
+    firstRound.knockDown(4);
+    firstRound.knockDown(5);
 
     assertTrue(firstRound.isFinished());
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_1st_round_with_1st_4_and_2nd_6_blow_out() {
+  public void should_return_false_when_is_finished_given_1st_round_with_4_and_6_knock_down_in_two_rolls() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(4);
-    firstRound.blowOut(6);
+    firstRound.knockDown(4);
+    firstRound.knockDown(6);
 
     assertTrue(firstRound.isFinished());
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_10th_round_with_1st_10_blow_out() {
+  public void should_return_false_when_is_finished_given_10th_round_with_10_knock_down_in_1st_roll() {
     BowlingRound finalRound = new BowlingRound(10);
-    finalRound.blowOut(10);
+    finalRound.knockDown(10);
 
     assertFalse(finalRound.isFinished());
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_10th_round_with_1st_10_and_2nd_9_blow_out() {
+  public void should_return_false_when_is_finished_given_10th_round_with_10_and_9_knock_down_in_two_rolls() {
     BowlingRound finalRound = new BowlingRound(10);
-    finalRound.blowOut(10);
-    finalRound.blowOut(9);
+    finalRound.knockDown(10);
+    finalRound.knockDown(9);
 
     assertFalse(finalRound.isFinished());
   }
 
   @Test
-  public void should_return_false_when_is_finished_given_10th_round_with_1st_1_and_2nd_9_blow_out() {
+  public void should_return_false_when_is_finished_given_10th_round_with_1_and_9_knock_down_in_two_rolls() {
     BowlingRound finalRound = new BowlingRound(10);
-    finalRound.blowOut(1);
-    finalRound.blowOut(9);
+    finalRound.knockDown(1);
+    finalRound.knockDown(9);
 
     assertFalse(finalRound.isFinished());
   }
 
   @Test
-  public void should_return_true_when_is_finished_given_10th_round_with_1st_1_and_2nd_8_blow_out() {
+  public void should_return_true_when_is_finished_given_10th_round_with_1_and_8_knock_down_in_two_rolls() {
     BowlingRound finalRound = new BowlingRound(10);
-    finalRound.blowOut(1);
-    finalRound.blowOut(8);
+    finalRound.knockDown(1);
+    finalRound.knockDown(8);
 
     assertTrue(finalRound.isFinished());
   }
@@ -81,49 +81,49 @@ public class BowlingRoundTest {
   // test cases of getScore()
 
   @Test
-  public void should_return_4_when_get_score_given_1st_round_with_4_blow_out() {
+  public void should_return_4_when_get_score_given_1st_round_with_4_knock_down_in_1st_roll() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(4);
+    firstRound.knockDown(4);
 
     assertEquals(4, firstRound.getScore());
   }
 
   @Test
-  public void should_return_10_when_get_score_given_1st_round_with_10_blow_out() {
+  public void should_return_10_when_get_score_given_1st_round_with_10_knock_down_in_1st_roll() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(10);
+    firstRound.knockDown(10);
 
     assertEquals(10, firstRound.getScore());
   }
 
   @Test
-  public void should_return_9_when_get_score_given_1st_round_with_1st_4_and_2nd_5_blow_out() {
+  public void should_return_9_when_get_score_given_1st_round_with_4_and_5_knock_down_in_two_rolls() {
     BowlingRound firstRound = new BowlingRound(1);
-    firstRound.blowOut(4);
-    firstRound.blowOut(5);
+    firstRound.knockDown(4);
+    firstRound.knockDown(5);
 
     assertEquals(9, firstRound.getScore());
   }
 
   @Test
-  public void should_return_15_when_get_score_given_1st_round_with_1st_10_blow_out_and_2nd_round_with_1st_5_blow_out() {
+  public void should_return_15_when_get_score_given_1st_round_with_10_knock_down_in_1st_roll_and_2nd_round_with_5_knock_down_in_1st_roll() {
     BowlingRound firstRound = new BowlingRound(1);
     BowlingRound secondRound = new BowlingRound(2);
     firstRound.setNextRound(secondRound);
-    firstRound.blowOut(10);
-    secondRound.blowOut(5);
+    firstRound.knockDown(10);
+    secondRound.knockDown(5);
 
     assertEquals(15, firstRound.getScore());
   }
 
   @Test
-  public void should_return_18_when_get_score_given_1st_round_with_1st_10_blow_out_and_2nd_round_with_1st_5_and_2nd_3_blow_out() {
+  public void should_return_18_when_get_score_given_1st_round_with_10_knock_down_in_1st_roll_and_2nd_round_with_5_and_3_knock_down_in_two_rolls() {
     BowlingRound firstRound = new BowlingRound(1);
     BowlingRound secondRound = new BowlingRound(2);
     firstRound.setNextRound(secondRound);
-    firstRound.blowOut(10);
-    secondRound.blowOut(5);
-    secondRound.blowOut(3);
+    firstRound.knockDown(10);
+    secondRound.knockDown(5);
+    secondRound.knockDown(3);
 
     assertEquals(18, firstRound.getScore());
   }
