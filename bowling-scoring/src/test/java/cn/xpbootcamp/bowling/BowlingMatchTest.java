@@ -18,4 +18,16 @@ public class BowlingMatchTest {
 
     assertEquals(150, bowlingMatch.getScore());
   }
+
+  @Test
+  public void should_return_0_when_get_score_given_10_rounds_with_20_rolls_and_0_knock_down_respectively()
+      throws MatchIsFinishedException {
+    BowlingMatch bowlingMatch = new BowlingMatch();
+
+    for (int i = 0; i < 20; i++) {
+      bowlingMatch.knowDown(0);
+    }
+
+    assertEquals(0, bowlingMatch.getScore());
+  }
 }
