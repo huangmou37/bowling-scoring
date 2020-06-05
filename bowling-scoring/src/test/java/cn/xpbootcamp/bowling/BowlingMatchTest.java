@@ -30,4 +30,16 @@ public class BowlingMatchTest {
 
     assertEquals(0, bowlingMatch.getScore());
   }
+
+  @Test
+  public void should_return_300_when_get_score_given_10_rounds_with_12_rolls_and_10_knock_down_respectively()
+      throws MatchIsFinishedException {
+    BowlingMatch bowlingMatch = new BowlingMatch();
+
+    for (int i = 0; i < 12; i++) {
+      bowlingMatch.knowDown(10);
+    }
+
+    assertEquals(300, bowlingMatch.getScore());
+  }
 }
