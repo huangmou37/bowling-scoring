@@ -20,11 +20,11 @@ public class BowlingMatch {
   }
 
   public void knowDown(int numberOfKnowDown) throws MatchIsFinishedException {
-    BowlingRound currRound = getCurrentRound();
-    if(currRound == null) {
+    if (isFinished()) {
       throw new MatchIsFinishedException();
     }
-    currRound.knockDown(numberOfKnowDown);
+
+    getCurrentRound().knockDown(numberOfKnowDown);
   }
 
   public int getScore() {
@@ -43,6 +43,11 @@ public class BowlingMatch {
     }
 
     return currRound;
+  }
+
+  private boolean isFinished() {
+    BowlingRound currRound = getCurrentRound();
+    return currRound == null;
   }
 
   private List<BowlingRound> bowlingRounds;
