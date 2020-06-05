@@ -168,4 +168,13 @@ public class BowlingRoundTest {
 
     assertEquals(30, firstRound.getScore());
   }
+
+  @Test
+  public void should_return_9_when_get_score_given_10th_round_with_5_and_4_knock_down_in_two_rolls() {
+    BowlingRound tenthRound = new BowlingRound(10);
+    tenthRound.knockDown(5);
+    tenthRound.knockDown(4);
+
+    assertEquals(9, tenthRound.getScore());
+  }
 }
