@@ -2,6 +2,10 @@ package cn.xpbootcamp.bowling;
 
 import org.junit.Test;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -226,5 +230,29 @@ public class BowlingRoundTest {
     tenthRound.knockDown(10);
 
     assertEquals(30, tenthRound.getScore());
+  }
+
+  @Test
+  public void should_return_300_when_sum_all_scores_given_10_rounds_with_12_strike() {
+    List<BowlingRound> allRounds = IntStream.range(0, 10)
+        .mapToObj(BowlingRound::new)
+        .collect(Collectors.toList());
+
+    for (int i = 0; i < 9; i++) {
+      allRounds.get(i).setNextRound(allRounds.get(i + 1));
+    }
+
+    for (int i = 0; i < 9; i++) {
+      allRounds.get(i).knockDown(10);
+    }
+
+    allRounds.get(9).knockDown(10);
+    allRounds.get(9).knockDown(10);
+    allRounds.get(9).knockDown(10);
+
+    int totalScore = allRounds.stream()
+        .reduce(
+            0, (tmpTotalScore, round) -> tmpTotalScore + round.getScore(), Integer::sum);
+    assertEquals(300, totalScore);
   }
 }
