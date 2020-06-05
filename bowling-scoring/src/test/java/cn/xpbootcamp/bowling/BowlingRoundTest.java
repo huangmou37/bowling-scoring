@@ -197,4 +197,24 @@ public class BowlingRoundTest {
 
     assertEquals(20, tenthRound.getScore());
   }
+
+  @Test
+  public void should_return_18_when_get_score_given_10th_round_with_10_and_5_and_3_knock_down_in_three_rolls() {
+    BowlingRound tenthRound = new BowlingRound(10);
+    tenthRound.knockDown(10);
+    tenthRound.knockDown(5);
+    tenthRound.knockDown(3);
+
+    assertEquals(18, tenthRound.getScore());
+  }
+
+  @Test
+  public void should_return_25_when_get_score_given_10th_round_with_10_and_10_and_5_knock_down_in_three_rolls() {
+    BowlingRound tenthRound = new BowlingRound(10);
+    tenthRound.knockDown(10);
+    tenthRound.knockDown(10);
+    tenthRound.knockDown(5);
+
+    assertEquals(25, tenthRound.getScore());
+  }
 }
